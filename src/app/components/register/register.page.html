@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHerf="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear una cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="form-content">
+    <div class="logo-image">
+      <img src="https://www.freeiconspng.com/uploads/letter-g-icon-png-24.png" alt="Logo" title="Logo" width="138">
+    </div>
+    <h3 style="color:grey;"><em>Crear una cuenta</em></h3>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label class="label-form" position="floating">Correo Electrónico</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label-form" position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="firstname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label-form" position="floating">Apellidos</ion-label>
+        <ion-input type="text" formControlName="lastname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label-form" position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-row>
+          <ion-col text-center>
+            <ion-button type="submit" shape="round" fill="outline" [disabled]="!registerForm.valid">Registrar</ion-button>
+          </ion-col>
+        </ion-row>
+      <br>
+    </form>
+    <div *ngIf="showMessage" [className]="class">
+      <strong><em>{{ message }}</em></strong>
+    </div>
+  </div>
+</ion-content>

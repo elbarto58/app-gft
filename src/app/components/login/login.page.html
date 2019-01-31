@@ -1,0 +1,35 @@
+<!-- Sin cabecera -->
+
+<!-- contenido login -->
+<ion-content padding>
+  <div class="form-content">
+    <div class="logo-image">
+      <img src="https://www.freeiconspng.com/uploads/letter-g-icon-png-24.png" alt="Logo" title="Logo" width="138">
+    </div>
+    <h3 style="color:grey;"><em>Iniciar Sesión</em></h3>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-item>
+          <ion-label class="label-form" position="floating">Correo Electrónico</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-form" position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <br><br>
+        <ion-row>
+          <ion-col text-center>
+            <ion-button type="submit" shape="round" fill="outline" [disabled]="!loginForm.valid">Entrar</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        <br>
+        <ion-col text-center>
+          <ion-button fill="clear" (click)="viewRegister()">
+            Crear cuenta
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>  
+  </div>
+</ion-content>

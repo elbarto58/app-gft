@@ -1,0 +1,38 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="end">
+      		<ion-button (click)="closeModal()">
+      			<ion-icon slot="icon-only" name="close"></ion-icon>
+      		</ion-button>
+    	</ion-buttons>
+		<ion-title>Mi Perfil</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="logo-image">
+      <img src="https://png.pngtree.com/svg/20170331/businessman_863430.png" alt="Logo" title="Logo" width="138">
+    </div>
+	<ion-list>
+		<ion-item>
+			<ion-label>Clave: {{ user?.id }}</ion-label>
+			<ion-icon name="lock"  size="large" slot="start"></ion-icon>
+		</ion-item>
+		<ion-item>
+			<ion-label>Nombre: {{ user?.firstname }}</ion-label>
+			<ion-icon name="person"  size="large" slot="start"></ion-icon>
+		</ion-item>
+		<ion-item>
+			<ion-label>Apellidos: {{ user?.lastname }}</ion-label>
+			<ion-icon name="person"  size="large" slot="start"></ion-icon>
+		</ion-item>
+		<ion-item>
+			<ion-label>Email: {{ user?.email }}</ion-label>
+			<ion-icon name="mail"  size="large" slot="start"></ion-icon>
+		</ion-item>
+		<ion-item (click)="logout()">
+			<ion-label>Salir</ion-label>
+			<ion-icon name="power"  size="large" slot="start"></ion-icon>
+		</ion-item>
+	</ion-list>
+</ion-content>

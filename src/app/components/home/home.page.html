@@ -1,0 +1,41 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="secondary">
+			<ion-button (click)="profile()">
+				<ion-icon slot="icon-only" name="contact"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title><strong>GFT</strong></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<h1 text-center><em>Bienvenido <strong>{{ user?.firstname }}</strong></em></h1>
+	<hr>
+	<div class="main-text"><span *ngIf="!isLoadAccounts" text-center>Cargando cuentas...</span></div>
+	<div *ngIf="isLoadAccounts" style="margin-top:-15%;">
+		<div class="main-text"><span *ngIf="accounts?.length == 0">No tiene cuentas, solicite una <ion-icon name="add-circle"></ion-icon></span></div>
+		<ion-list *ngIf="accounts?.length > 0">
+			<ion-item-sliding *ngFor="let a of accounts">
+				<ion-item>
+					<ion-label>
+						<ion-text><h2>{{ a?.name }}</h2></ion-text>
+						<ion-text><h3>Tipo <strong><em>{{ a?.type }}</em></strong></h3></ion-text>
+					</ion-label>
+					<ion-icon name="star"  size="large" slot="start"></ion-icon>
+				</ion-item>
+				<ion-item-options side="end">
+					<ion-item-option>Depósitos: ${{ a?.deposits }}</ion-item-option>
+					<ion-item-option color="danger">Retiros: ${{ a?.withdrawals }}</ion-item-option>
+					<ion-item-option>Saldo: ${{ a?.balance }}</ion-item-option>
+				</ion-item-options>
+			</ion-item-sliding>
+		</ion-list>
+		<span *ngIf="accounts?.length > 0" style="font-size:10pt;color:lightgrey;"><em>Deslize hacia la izquierda y consulte: depósitos, retiros y saldo de la cuenta</em></span>
+		<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+			<ion-fab-button (click)="viewAccount()">
+				<ion-icon name="add-circle"></ion-icon>
+			</ion-fab-button>
+		</ion-fab>
+	</div>
+</ion-content>

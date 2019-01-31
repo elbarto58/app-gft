@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+      		<ion-back-button defaultHerf="/home"></ion-back-button>
+    	</ion-buttons>
+		<ion-title>Crear cuenta</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="main-text"><span *ngIf="!isLoadCards" text-center>Cargando catálogo...</span></div>
+	<div *ngIf="isLoadCards" style="margin-top:-15px;">
+		<div class="main-text"><span *ngIf="accounts?.length == 0">No existe un catálogo</span></div>
+		<ion-list *ngIf="cards?.length > 0">
+			<h4><em>Mi catálogo de cuentas</em></h4>
+			<ion-item-sliding *ngFor="let c of cards">
+				<ion-item>
+					<ion-label>
+						<ion-text><h2>{{ c?.name }}</h2></ion-text>
+						<ion-text><h3>Tipo <strong><em>{{ c?.type }}</em></strong></h3></ion-text>
+					</ion-label>
+					<ion-icon name="star"  size="large" slot="start"></ion-icon>
+				</ion-item>
+				<ion-item-options side="end">
+					<ion-item-option (click)="createAccount(c?.name, c?.type)">Solicitar cuenta</ion-item-option>
+				</ion-item-options>
+			</ion-item-sliding>
+		</ion-list>
+		<span style="font-size:10pt;color:lightgrey;"><em>Deslize hacia la izquierda y solicite una cuenta</em></span>
+		<br><br><br>
+		<div *ngIf="showMessage" [className]="class"><strong><em>{{ message }}</em></strong></div>
+	</div>
+</ion-content>
